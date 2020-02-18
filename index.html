@@ -9,6 +9,8 @@
     <link rel="stylesheet" type="text/css" href="index.css">
     <link href="content/bootstrap-4.4.1-dist/css/bootstrap.min.css">
     <script src="content/angular.min.js"></script>
+    <script src="content/angular-1.7.9/angular-route.min.js"></script>
+
 
     <!-- Instanciando .js do Angular -->
 
@@ -18,8 +20,10 @@
 <body>
 
     <header ng-include="'header.html'"></header>
+    <main ng-view></main>
 
-    <div class="content">
+
+    <!-- <div class="content">
         <div ng-controller="Controller">
             <button ng-click="order = 'name'">Order By Name</button>
             <button ng-click="order = 'belt'">Order By Belt</button>
@@ -40,7 +44,7 @@
                 <input type="submit" value="Add new ninja" />
             </form>
         </div>
-    </div>
+    </div> -->
 
 </body>
 

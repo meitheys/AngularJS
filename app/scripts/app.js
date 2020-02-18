@@ -1,4 +1,23 @@
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ['ngRoute']);
+
+app.config(['$routeProvider', function($routeProvider){
+
+    $routeProvider
+    .when('/home', {
+        templateUrl: 'views/home.html'
+    })
+    .when('/list', {
+        //Que view queremos ver na URL
+        templateUrl: 'views/list.html',
+        //Que controller queremos usar na URL
+        controller: 'Controller'
+    })
+    //Se não for pra alguma das anteriores, vai para home
+    .otherwise({
+        redirectTo: '/home'
+    })
+
+}]);
 
 app.controller('Controller', function ($scope) {
 
