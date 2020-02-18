@@ -19,7 +19,7 @@ app.config(['$routeProvider', function($routeProvider){
 
 }]);
 
-app.controller('Controller', function ($scope) {
+app.controller('Controller', function ($scope, $http) {
 
     $scope.removeNinja = function (ninja) {
         var removedNinja = $scope.ninjas.indexOf(ninja)
@@ -41,34 +41,44 @@ app.controller('Controller', function ($scope) {
 
     };
 
-    $scope.ninjas = [
-        {
-            name: "Yoshi",
-            belt: "Green",
-            rate: 50,
-            available: true,
-            thumb: "content/img/icon.png"
-        },
-        {
-            name: "Crystal",
-            belt: "Yellow",
-            rate: 30,
-            available: true,
-            thumb: "content/img/icon.png"
-        },
-        {
-            name: "Ryu",
-            belt: "Orange",
-            rate: 20,
-            available: false,
-            thumb: "content/img/icon.png"
-        },
-        {
-            name: "Shaun",
-            belt: "Black",
-            rate: 1000,
-            available: true,
-            thumb: "content/img/icon.png"
-        }
-    ];
+    $http({
+        method: 'GET',
+        url: 'app/data/ninjas.json'
+    }).then(function successCallback(response) {
+        $scope.ninjas = response.data;
+    }, function errorCallback(response) {
+        console.log('erro');
+    });
+
+
+    // $scope.ninjas = [
+    //     {
+    //         name: "Yoshi",
+    //         belt: "Green",
+    //         rate: 50,
+    //         available: true,
+    //         thumb: "content/img/icon.png"
+    //     },
+    //     {  
+    //         name: "Crystal",
+    //         belt: "Yellow",
+    //         rate: 30,
+    //         available: true,
+    //         thumb: "content/img/icon.png"
+    //     },
+    //     {
+    //         name: "Ryu",
+    //         belt: "Orange",
+    //         rate: 20,
+    //         available: false,
+    //         thumb: "content/img/icon.png"
+    //     },
+    //     {
+    //         name: "Shaun",
+    //         belt: "Black",
+    //         rate: 1000,
+    //         available: true,
+    //         thumb: "content/img/icon.png"
+    //     }
+    // ];
 });
